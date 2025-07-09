@@ -80,3 +80,5 @@ function createStudent(
 
 const student1 = createStudent(StudentClass, "Alice", "John");
 console.log(student1);
+
+
