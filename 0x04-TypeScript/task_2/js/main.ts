@@ -76,3 +76,22 @@ function executeWork(employee: Director | Teacher): string {
 // Testing executeWork function
 console.log(executeWork(createEmployee(200)));
 console.log(executeWork(createEmployee(1000)));
+
+
+/* Task 7 */
+
+// String literal type named Subjects with Math and History allowed as values
+type Subjects = "Math" | "History";
+
+function teachClass(todayClass:Subjects): string {
+    switch (todayClass) {
+        case "Math":
+            return "Teaching Math";
+        case "History":
+            return "Teaching History";
+    }
+}
+
+// Test teachClass function 
+console.log(teachClass('Math'));
+console.log(teachClass('History'));
