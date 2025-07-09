@@ -1,3 +1,5 @@
+/* Task 5 */
+
 // Director and teacher interface
 interface DirectorInterface {
 	workFromHome(): string;
@@ -41,7 +43,7 @@ class Teacher implements TeacherInterface {
 }
 
 // createEmployee function that returns teacher or director instance based on input
-const createEmployee = (salary: number | string) => {
+const createEmployee = (salary: number | string): Director | Teacher => {
 	if (typeof salary == "number" && salary < 500) {
 		return new Teacher();
 	} else {
@@ -53,3 +55,24 @@ const createEmployee = (salary: number | string) => {
 console.log(createEmployee(200));
 console.log(createEmployee(1000));
 console.log(createEmployee("$500"));
+
+
+/* Task 6 */
+
+// isDirector function for using as a type predicate
+function isDirector(employee: Director | Teacher ): employee is Director {
+    return (employee as Director).workDirectorTasks !== undefined;
+}
+
+function executeWork(employee: Director | Teacher): string {
+    if (isDirector(employee)) {
+        return employee.workDirectorTasks();
+    }
+    else {
+        return employee.workTeacherTasks();
+    }
+}
+
+// Testing executeWork function
+console.log(executeWork(createEmployee(200)));
+console.log(executeWork(createEmployee(1000)));
